@@ -1,10 +1,7 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\Models\Client;
 use Illuminate\Http\Request;
-
 class SiteController extends Controller
 {
     /**Coleta e redireciona os dados do banco de dados para a view index*/
