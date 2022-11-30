@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 class SiteController extends Controller
 {
     /**Coleta e redireciona os dados do banco de dados para a view index*/
-    public function index(){
+    function index(){
         $clients = Client::get();
         return view('index', ['clients' => $clients]);
     }
