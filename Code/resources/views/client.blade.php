@@ -17,8 +17,13 @@
                 </section>
 
                 <!--Botão para voltar para a página principal-->
-                <footer>
-                    <button class="btn btn-primary"><a style="text-decoration: none;" class="text-light" href="{{ route('SiteController.index') }}">Go back</a></button>
+                <footer style="display: flex;flex-direction: row;">
+                    <button class="btn btn-primary" style="margin-left: 5px;"><a style="text-decoration: none;" class="text-light" href="{{ route('SiteController.index') }}">Go back</a></button>
+                    <form method="POST" action="{{ route('SiteController.delete_client', $clients->id) }}">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger" style="margin-left: 5px;">Delete</button>
+                    </form>
                 </footer>
             </div>
         </div>

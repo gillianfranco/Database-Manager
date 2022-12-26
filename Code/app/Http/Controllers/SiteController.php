@@ -2,6 +2,8 @@
 namespace App\Http\Controllers;
 use App\Models\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 class SiteController extends Controller
 {
     /**Coleta e redireciona os dados do banco de dados para a view index*/
@@ -16,6 +18,13 @@ class SiteController extends Controller
         return view('client', ['clients' => $clients]);
     }
 
+    /**Deleta os dados de um cliente especifíco */
+    public function delete_client(int $id){
+        $clients = Client::find($id);
+        $clients->delete();
+        return redirect('/');
+    }
+
     /**Redireciona o usuário para a página de cadastro */
     public function register_get(){
         return view('register');
@@ -24,9 +33,7 @@ class SiteController extends Controller
     /**Coleta os dados indicados no formulário e amarzena no banco de dados */
     public function register_post(Request $request){
         $data = $request->except('_token');
-
         Client::create($data);
-
         return redirect('/');
     }
 }
