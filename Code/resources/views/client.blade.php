@@ -24,6 +24,7 @@
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger" style="margin-left: 5px;">Delete</button>
                     </form>
+                    <button class="btn btn-success" style="margin-left: 5px;"><a style="text-decoration: none;" class="text-light" href="{{ route('SiteController.update', $clients->id) }}">Update</a></button>
                 </footer>
             </div>
         </div>

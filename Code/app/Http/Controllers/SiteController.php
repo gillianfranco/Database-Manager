@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 class SiteController extends Controller
 {
     /**Coleta e redireciona os dados do banco de dados para a view index*/
-    function index(){
+    public function index(){
         $clients = Client::get();
         return view('index', ['clients' => $clients]);
     }
@@ -34,6 +34,27 @@ class SiteController extends Controller
     public function register_post(Request $request){
         $data = $request->except('_token');
         Client::create($data);
+        return redirect('/');
+    }
+
+    /**Redireciona para a página de atualização de dados */
+    public function update_get(int $id){
+        $client = Client::find($id);
+        return view('update', ['client' => $client]);
+    }
+
+    /**Registra os dados atualizados */
+    public function update_post(int $id, Request $request){
+        $client = Client::find($id);
+        $client->update([
+            'name' => $request->name,
+            'age' => $request->age,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'address' => $request->address,
+            'observation' => $request->observation
+        ]);
+
         return redirect('/');
     }
 }

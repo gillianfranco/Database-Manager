@@ -17,3 +17,9 @@ Route::get('/register', [SiteController::class, 'register_get'])->name('SiteCont
 
 /**Coleta os dados indicados no formulário e amarzena no banco de dados */
 Route::post('/register', [SiteController::class, 'register_post'])->name('SiteController.register_post');
+
+/**Redireciona para a página de atualização de dados */
+Route::get('/register/{id}/update', [SiteController::class, 'update_get'])->name('SiteController.update');
+
+/**Registra os dados atualizados */
+Route::post('/register/{id}/update', [SiteController::class, 'update_post'])->name("SiteController.update_register");

@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('clients', function (Blueprint $table) {
             $table->id();
             $table->string('name', 50);
-            $table->string('age', 3);
-            $table->string('email', 60);
-            $table->string('phone', 20);
+            $table->integer('age');
+            $table->char('email', 60);
+            $table->char('phone', 20);
             $table->string('address', 50);
-            $table->text('observation');
+            $table->string('observation');
             $table->timestamps();
         });
     }
